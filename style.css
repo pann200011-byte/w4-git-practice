@@ -1,14 +1,16 @@
 /* ============================
    W4 練習 Chatbot 樣式
-   學生練習：修改顏色、字體大小等
+   🌸 日系和風配色
    ============================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
   font-family: 'Noto Sans TC', sans-serif;
-  /* 練習：把背景色改成你喜歡的顏色 */
-  background-color: #f0f4f8;
+  /* 和紙のような温かみのあるベージュ */
+  background-color: #f5f0e8;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,23 +18,25 @@ body {
 }
 
 .container {
-  background: white;
+  /* 淡い和紙風の白 */
+  background: #faf8f4;
   border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 24px rgba(139, 119, 101, 0.12);
   width: 480px;
   max-width: 95vw;
   overflow: hidden;
+  border: 1px solid #e8dfd3;
 }
 
 header {
-  /* 練習：把標題列顏色從藍色改成其他顏色 */
-  background: #4f8ef7;
-  color: white;
+  /* 桜色 — 柔らかい桜ピンク */
+  background: linear-gradient(135deg, #d4a0a0, #c9878f);
+  color: #fef9f7;
   padding: 20px 24px;
 }
 
-header h1 { font-size: 20px; }
-header .subtitle { font-size: 13px; opacity: 0.85; margin-top: 4px; }
+header h1 { font-size: 20px; font-weight: 700; }
+header .subtitle { font-size: 13px; opacity: 0.9; margin-top: 4px; }
 
 #chat-box {
   height: 360px;
@@ -41,6 +45,8 @@ header .subtitle { font-size: 13px; opacity: 0.85; margin-top: 4px; }
   display: flex;
   flex-direction: column;
   gap: 12px;
+  /* 淡い和紙テクスチャ風 */
+  background: #faf8f4;
 }
 
 .message {
@@ -52,16 +58,17 @@ header .subtitle { font-size: 13px; opacity: 0.85; margin-top: 4px; }
 }
 
 .message.bot {
-  background: #f0f4f8;
-  color: #333;
+  /* 若竹色 — 淡い抹茶グリーン */
+  background: #e8ede5;
+  color: #4a5548;
   align-self: flex-start;
   border-bottom-left-radius: 4px;
 }
 
 .message.user {
-  /* 練習：把使用者訊息顏色從綠色改成你喜歡的顏色 */
-  background: #4caf87;
-  color: white;
+  /* 薄紅色 — 温かみのあるピンク */
+  background: #d4a0a0;
+  color: #fef9f7;
   align-self: flex-end;
   border-bottom-right-radius: 4px;
 }
@@ -70,35 +77,57 @@ header .subtitle { font-size: 13px; opacity: 0.85; margin-top: 4px; }
   display: flex;
   padding: 16px;
   gap: 10px;
-  border-top: 1px solid #eee;
+  border-top: 1px solid #e8dfd3;
+  background: #faf8f4;
 }
 
 .input-area input {
   flex: 1;
   padding: 10px 14px;
-  border: 1px solid #ddd;
+  border: 1px solid #ddd5c9;
   border-radius: 8px;
   font-size: 14px;
   outline: none;
+  background: #fffdf9;
+  color: #5a4e44;
+}
+
+.input-area input::placeholder {
+  color: #b8a99a;
 }
 
 .input-area input:focus {
-  border-color: #4f8ef7;
+  border-color: #c9878f;
+  box-shadow: 0 0 0 2px rgba(201, 135, 143, 0.15);
 }
 
 .input-area button {
-  /* 練習：把按鈕顏色改成你喜歡的顏色
-     conflict-a 分支：改成 #4f8ef7（藍色）
-     conflict-b 分支：改成 #e84393（粉色）  */
-  background: #4f8ef7;
-  color: white;
+  /* 鴇色 — 柔らかい和風ピンク */
+  background: linear-gradient(135deg, #c9878f, #b87178);
+  color: #fef9f7;
   border: none;
   padding: 10px 20px;
   border-radius: 8px;
   cursor: pointer;
   font-size: 14px;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
 }
 
 .input-area button:hover {
   opacity: 0.85;
+}
+
+/* 滾動條樣式 */
+#chat-box::-webkit-scrollbar {
+  width: 6px;
+}
+
+#chat-box::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#chat-box::-webkit-scrollbar-thumb {
+  background: #d4c8bb;
+  border-radius: 3px;
 }
