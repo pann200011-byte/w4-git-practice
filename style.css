@@ -1,42 +1,83 @@
 /* ============================
    W4 練習 Chatbot 樣式
-   🌸 日系和風配色
+   ⚡️ 賽博龐克 (Cyberpunk) 風格
    ============================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;500;700&display=swap');
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg-dark: #0d0221;
+  --panel-bg: rgba(15, 15, 30, 0.9);
+  --neon-cyan: #00f3ff;
+  --neon-magenta: #ff00f0;
+  --neon-yellow: #fde047;
+  --text-main: #e0e0e0;
+}
+
+* { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
 
 body {
-  font-family: 'Noto Sans TC', sans-serif;
-  /* 和紙のような温かみのあるベージュ */
-  background-color: #f5f0e8;
+  font-family: 'Rajdhani', sans-serif;
+  background-color: var(--bg-dark);
+  background-image: 
+    linear-gradient(rgba(0, 243, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 243, 255, 0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  color: var(--text-main);
 }
 
 .container {
-  /* 淡い和紙風の白 */
-  background: #faf8f4;
-  border-radius: 16px;
-  box-shadow: 0 4px 24px rgba(139, 119, 101, 0.12);
+  background: var(--panel-bg);
+  border: 2px solid var(--neon-cyan);
+  border-radius: 4px;
+  box-shadow: 0 0 15px rgba(0, 243, 255, 0.3), inset 0 0 10px rgba(0, 243, 255, 0.1);
   width: 480px;
   max-width: 95vw;
   overflow: hidden;
-  border: 1px solid #e8dfd3;
+  position: relative;
+}
+
+.container::after {
+  content: "SYSTEM LOG // ACTIVE";
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 10px;
+  color: var(--neon-cyan);
+  opacity: 0.5;
+  letter-spacing: 1px;
 }
 
 header {
-  /* 桜色 — 柔らかい桜ピンク */
-  background: linear-gradient(135deg, #d4a0a0, #c9878f);
-  color: #fef9f7;
+  background: rgba(0, 243, 255, 0.1);
+  border-bottom: 2px solid var(--neon-cyan);
+  color: var(--neon-cyan);
   padding: 20px 24px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
-header h1 { font-size: 20px; font-weight: 700; }
-header .subtitle { font-size: 13px; opacity: 0.9; margin-top: 4px; }
+header h1 { 
+  font-family: 'Orbitron', sans-serif;
+  font-size: 22px; 
+  text-shadow: 0 0 8px var(--neon-cyan);
+}
+
+header .subtitle { 
+  font-size: 11px; 
+  opacity: 0.8; 
+  margin-top: 4px; 
+  color: var(--neon-magenta);
+  text-shadow: 0 0 5px var(--neon-magenta);
+}
 
 #chat-box {
   height: 360px;
@@ -44,90 +85,112 @@ header .subtitle { font-size: 13px; opacity: 0.9; margin-top: 4px; }
   padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  /* 淡い和紙テクスチャ風 */
-  background: #faf8f4;
+  gap: 15px;
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .message {
-  max-width: 75%;
-  padding: 10px 14px;
-  border-radius: 12px;
-  font-size: 14px;
-  line-height: 1.5;
+  max-width: 80%;
+  padding: 12px 16px;
+  font-size: 15px;
+  line-height: 1.4;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 95% 100%, 0 100%);
 }
 
 .message.bot {
-  /* 若竹色 — 淡い抹茶グリーン */
-  background: #e8ede5;
-  color: #4a5548;
+  background: rgba(0, 243, 255, 0.1);
+  color: var(--neon-cyan);
+  border-left: 3px solid var(--neon-cyan);
   align-self: flex-start;
-  border-bottom-left-radius: 4px;
 }
 
 .message.user {
-  /* 薄紅色 — 温かみのあるピンク */
-  background: #d4a0a0;
-  color: #fef9f7;
+  background: rgba(255, 0, 240, 0.1);
+  color: var(--neon-magenta);
+  border-right: 3px solid var(--neon-magenta);
   align-self: flex-end;
-  border-bottom-right-radius: 4px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 5% 100%, 0 80%);
 }
 
 .input-area {
   display: flex;
-  padding: 16px;
-  gap: 10px;
-  border-top: 1px solid #e8dfd3;
-  background: #faf8f4;
+  padding: 18px;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.5);
+  border-top: 1px solid rgba(0, 243, 255, 0.3);
 }
 
 .input-area input {
   flex: 1;
-  padding: 10px 14px;
-  border: 1px solid #ddd5c9;
-  border-radius: 8px;
-  font-size: 14px;
+  padding: 12px 14px;
+  background: rgba(20, 20, 40, 0.8);
+  border: 1px solid var(--neon-cyan);
+  color: var(--neon-cyan);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 16px;
   outline: none;
-  background: #fffdf9;
-  color: #5a4e44;
-}
-
-.input-area input::placeholder {
-  color: #b8a99a;
+  border-radius: 2px;
 }
 
 .input-area input:focus {
-  border-color: #c9878f;
-  box-shadow: 0 0 0 2px rgba(201, 135, 143, 0.15);
+  box-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+}
+
+.input-area input::placeholder {
+  color: rgba(0, 243, 255, 0.3);
 }
 
 .input-area button {
-  /* 鴇色 — 柔らかい和風ピンク */
-  background: linear-gradient(135deg, #c9878f, #b87178);
-  color: #fef9f7;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
-  cursor: pointer;
+  background: transparent;
+  color: var(--neon-cyan);
+  border: 1px solid var(--neon-cyan);
+  padding: 10px 24px;
+  font-family: 'Orbitron', sans-serif;
   font-size: 14px;
-  font-weight: 500;
-  transition: opacity 0.2s ease;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
 }
 
 .input-area button:hover {
-  opacity: 0.85;
+  background: var(--neon-cyan);
+  color: var(--bg-dark);
+  box-shadow: 0 0 20px var(--neon-cyan);
 }
 
-/* 滾動條樣式 */
+/* 滾動條樣式 - 螢光風格 */
 #chat-box::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
 }
 
 #chat-box::-webkit-scrollbar-track {
-  background: transparent;
+  background: rgba(0, 0, 0, 0.2);
 }
 
 #chat-box::-webkit-scrollbar-thumb {
-  background: #d4c8bb;
-  border-radius: 3px;
+  background: var(--neon-cyan);
+  box-shadow: 0 0 10px var(--neon-cyan);
+}
+
+/* 動態掃描線效果 (選配) */
+.container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(0, 243, 255, 0.2);
+  z-index: 10;
+  pointer-events: none;
+  animation: scanline 6s linear infinite;
+}
+
+@keyframes scanline {
+  0% { top: 0; }
+  100% { top: 100%; }
 }
